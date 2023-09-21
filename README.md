@@ -72,3 +72,31 @@ Bitcoin node -> Stacks follower node <-> Subnet miner node
 - Run a subnet miner node configured to follow this contract
 - The subnet node needs to talk to a stacks node
 - The stacks node needs to talk to a bitcoin node
+
+**Bitcoin Node Testnet**
+
+Open a terminal window and follow these steps:
+
+- Set the BTC_VERSION environment variable:
+
+  - export BTC_VERSION=22.0
+
+- Download the Bitcoin binary:
+
+  - sudo curl -L https://bitcoin.org/bin/bitcoin-core-${BTC_VERSION}/bitcoin-${BTC_VERSION}-osx64.tar.gz -o /Volumes/BlockChain/bitcoin-22.0.tar.gz
+
+- Extract the downloaded archive:
+
+  - sudo tar -xzvf /Volumes/BlockChain/bitcoin-${BTC_VERSION}.tar.gz -C /tmp
+
+- Move the binaries to the appropriate location:
+
+  - sudo cp /Volumes/BlockChain/bitcoin-${BTC_VERSION}/bin/* /usr/local/bin/
+
+- Bitcoin Config:
+
+  - Create the bitcoin data directory:
+    - sudo mkdir /Volumes/BlockChain/bitcoin
+
+- nano bitcoin/bitcoin.conf
+
