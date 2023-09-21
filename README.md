@@ -63,3 +63,12 @@ This repository implements a consensus mechanism two-phase commit approach among
 Subnets support different types of assets such as fungible tokens (FTs), non-fungible tokens (NFTs), and the native Stacks token (STX). Users can deposit and withdraw these assets from the subnet using specific layer-1 transactions.
 **Deposit and Withdrawal Process:**
 To deposit assets into a subnet, users submit a regular layer-1 transaction to invoke the "deposit" method on the subnet's smart contract. For withdrawals, users first commit the withdrawal on the subnet, and then they submit another layer-1 transaction to invoke the "withdraw" method on the subnet's smart contract to complete the withdrawal process.
+
+**Subnet Miner testnet**
+
+Bitcoin node -> Stacks follower node <-> Subnet miner node
+
+- Deploy your own subnet.clar (from this template https://github.com/hirosystems/stacks-subnets/blob/develop/core-contracts/contracts/templates/subnet.clar.mustache)
+- Run a subnet miner node configured to follow this contract
+- The subnet node needs to talk to a stacks node
+- The stacks node needs to talk to a bitcoin node
