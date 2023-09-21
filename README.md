@@ -1,4 +1,4 @@
-**Subnets**
+# **Subnets**
 
 **Subnet Definition:**
 
@@ -61,10 +61,11 @@ This repository implements a consensus mechanism two-phase commit approach among
 **Asset Support:**
 
 Subnets support different types of assets such as fungible tokens (FTs), non-fungible tokens (NFTs), and the native Stacks token (STX). Users can deposit and withdraw these assets from the subnet using specific layer-1 transactions.
+
 **Deposit and Withdrawal Process:**
 To deposit assets into a subnet, users submit a regular layer-1 transaction to invoke the "deposit" method on the subnet's smart contract. For withdrawals, users first commit the withdrawal on the subnet, and then they submit another layer-1 transaction to invoke the "withdraw" method on the subnet's smart contract to complete the withdrawal process.
 
-**Subnet Miner testnet**
+## **Subnet Miner testnet**
 
 Bitcoin node -> Stacks follower node <-> Subnet miner node
 
@@ -73,30 +74,69 @@ Bitcoin node -> Stacks follower node <-> Subnet miner node
 - The subnet node needs to talk to a stacks node
 - The stacks node needs to talk to a bitcoin node
 
-**Bitcoin Node Testnet**
+## **Bitcoin Node Testnet**
 
 Open a terminal window and follow these steps:
 
 - Set the BTC_VERSION environment variable:
 
-  - export BTC_VERSION=22.0
+  - ```export BTC_VERSION=22.0```
 
 - Download the Bitcoin binary:
 
-  - sudo curl -L https://bitcoin.org/bin/bitcoin-core-${BTC_VERSION}/bitcoin-${BTC_VERSION}-osx64.tar.gz -o /Volumes/BlockChain/bitcoin-22.0.tar.gz
+  - ```sudo curl -L https://bitcoin.org/bin/bitcoin-core-${BTC_VERSION}/bitcoin-${BTC_VERSION}-osx64.tar.gz -o /Volumes/BlockChain/bitcoin-22.0.tar.gz```
 
 - Extract the downloaded archive:
 
-  - sudo tar -xzvf /Volumes/BlockChain/bitcoin-${BTC_VERSION}.tar.gz -C /tmp
+  - ```sudo tar -xzvf /Volumes/BlockChain/bitcoin-${BTC_VERSION}.tar.gz -C /tmp```
 
 - Move the binaries to the appropriate location:
 
-  - sudo cp /Volumes/BlockChain/bitcoin-${BTC_VERSION}/bin/* /usr/local/bin/
+  - ```sudo cp /Volumes/BlockChain/bitcoin-${BTC_VERSION}/bin/* /usr/local/bin/```
 
 - Bitcoin Config:
 
   - Create the bitcoin data directory:
-    - sudo mkdir /Volumes/BlockChain/bitcoin
+    - ```sudo mkdir /Volumes/BlockChain/bitcoin```
 
-- nano bitcoin/bitcoin.conf
+- ```nano bitcoin/bitcoin.conf```
+
+**Start Bitcoin**
+- ```bitcoind -datadir=/Volumes/BlockChain/bitcoin -conf=/Volumes/BlockChain/bitcoin/bitcoin.conf```
+  - It will take a few hours for the node to synchronize with Bitcoin testnet.
+
+To track Progress
+- ```bitcoin-cli -rpcconnect=localhost -rpcport=18332  -rpcuser=btcuser -rpcpassword=btcpass getblockchaininfo | jq .blocks```
+
+## **Stacks Node Testnet**
+
+- ```git clone --depth 1 --branch master https://github.com/stacks-network/stacks-blockchain.git /Volumes/BlockChain/stacks-blockchain```
+  
+- ```cd /Volumes/BlockChain/stacks-blockchain/testnet/stacks-node```
+  
+- ```cargo build --features monitoring_prom,slog_json --release --bin stacks-node```
+  
+- ```npm install @stacks/cli shx rimraf```
+  
+- ```npx @stacks/cli make_keychain -t 2>/dev/null | jq -r```
+  
+```
+{
+  "mnemonic": "mnemonic phrase",
+  "keyInfo": {
+    "privateKey": "private key",
+    "publicKey": "public key",
+    "address": "STGHDV1E376Q963W5RTJS0MDPP7C1XACGXR9GKNZ",
+    "btcAddress": "miXv45C9iNemonHr9Z2pDgYCzbjyYqjpy6",
+    "wif": "wif",
+    "index": 0
+  }
+}
+```
+- ```bitcoin-cli -rpcport=18332 -rpcuser=[youruser] -rpcpassword=[yourpassword] createwallet "NodeWallet" ```
+- ```bitcoin-cli -rpcport=18332 -rpcuser=[youruser] -rpcpassword=[yourpassword] importaddress miXv45C9iNemonHr9Z2pDgYCzbjyYqjpy6```
+-  Download the latest Xenon file from https://archive.hiro.so/testnet/stacks-blockchain/ and place it on your working directory
+-  ```nano /Volumes/BlockChain/testnet-miner-conf.toml```
+  - From the make_keychain step, modify the seed and local_peer_seed values with privateKey
+
 
