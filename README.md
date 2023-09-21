@@ -138,5 +138,36 @@ To track Progress
 -  Download the latest Xenon file from https://archive.hiro.so/testnet/stacks-blockchain/ and place it on your working directory
 -  ```nano /Volumes/BlockChain/testnet-miner-conf.toml```
   - From the make_keychain step, modify the seed and local_peer_seed values with privateKey
+Start the stacks node
+- ```stacks-node start --config=/Volumes/BlockChain/testnet-miner-conf.toml```
+
+## **Subnet Node Testnet**
+
+- https://docs.stacks.co/docs/nodes-and-miners/run-a-node 
+Github Repo
+- https://github.com/hirosystems/stacks-subnets 
+- ```npx @stacks/cli make_keychain -t 2>/dev/null | jq -r```
+```
+{
+  "mnemonic": "[mnemonic]",
+  "keyInfo": {
+    "privateKey": "[privatekey]",
+    "publicKey": "[public key]",
+    "address": "ST1QYC78M6S790CRRMP3BX6PEC5N2K8H10N74Z0CE",
+    "btcAddress": "mqicxvJ9KAyB8x58MMU1P7upShCfEVjupq",
+    "wif": "[wif]",
+    "index": 0
+  }
+}
+```
+
+**Build the subnet miner node**
+
+- ```cd /Volumes/BlockChain/stacks-subnets/testnet/stacks-node```
+- ```cargo build --features monitoring_prom,slog_json --release```
+- subnet-node is in /Volumes/BlockChain/stacks-subnets/target/release/
+- Create the config file Subnet.toml
+Then run it with:
+- ```stacks-subnets/target/release/subnet-node start --config=Subnet.toml```
 
 
