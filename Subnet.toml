@@ -1,0 +1,27 @@
+[node]
+working_dir = "/Volumes/BlockChain/subnet-alpha"
+rpc_bind = "127.0.0.1:80443"
+p2p_bind = "127.0.0.1:80444"
+mining_key = "[private key]"
+miner = true
+wait_time_for_microblocks = 50_000
+
+[miner]
+first_attempt_time_ms = 60_000
+subsequent_attempt_time_ms = 60_000
+microblock_attempt_time_ms = 30_000
+
+[burnchain]
+chain = "stacks_layer_1"
+mode = "xenon"
+first_burn_header_height = 46_721
+first_burn_header_hash = "9ba2f357115308fb1c503715f3a1b0cb3e8fdbe6baea7e7634635affdf675501"
+contract_identifier = "<CONTRACT_NAME_HERE>"
+peer_host = "127.0.0.1"
+rpc_port = 20443
+peer_port = 20444
+rpc_ssl = false
+
+[[ustx_balance]]
+address = "STFTX3F4XCY7RS5VRHXP2SED0WC0YRKNWTNXD74P"
+amount = 10000000000000000
