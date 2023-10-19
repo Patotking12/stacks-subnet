@@ -1,0 +1,27 @@
+[node]
+chain_id = 0x12345679
+rpc_bind = "0.0.0.0:8054"
+p2p_bind = "0.0.0.0:8055"
+bootstrap_node = "03f39cfb7b6cc208f7480bd0c5f6340487f243329e38772b19253b0e1380f2e723@127.0.0.1:8044"
+local_peer_seed = "029b65a8ee035c0c4c6850550f1aa432f2e2e61a91d0633efbb21c5abc19db8d90"
+prometheus_bind = "0.0.0.0:9156"
+working_dir = "/Users/Pato_Gomez/Desktop/BlockChain/API-Environment/subnet-follower"
+miner = false
+
+
+
+
+
+
+[burnchain]
+chain = "stacks_layer_1"
+mode = "subnet"
+
+first_burn_header_height = 125_753
+contract_identifier = "ST3D03X5BHMNSAAW71NN7BQRMV4DW2G4JB3PXDYJG.subnet-v1"
+peer_host = "127.0.0.1"
+rpc_port = 20453
+peer_port = 20454
+observer_port = 30455
+rpc_ssl = false
+

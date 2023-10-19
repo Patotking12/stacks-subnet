@@ -1,26 +1,38 @@
 [node]
-working_dir = "/Volumes/BlockChain/subnet-alpha"
+chain_id = 0x12345679
 rpc_bind = "0.0.0.0:8044"
 p2p_bind = "0.0.0.0:8045"
-mining_key = "[private key]"
+# or set to whatever mining key is chosen during contract publish!
+mining_key = "7e4939be712250b07873f01d24db57786814c59692ebbf01792e88a1fa3ea6be01"
+local_peer_seed = "03f39cfb7b6cc208f7480bd0c5f6340487f243329e38772b19253b0e1380f2e723"
+# set to the node's public IP
+data_url = "http://189.193.73.227:8044"
+p2p_address = "189.193.73.227:8044"
 miner = true
 mine_microblocks = true
-local_peer_seed = "[private key]"
-chain_id = [your chain id]
+prometheus_bind = "0.0.0.0:9153"  
+working_dir = "/Users/Pato_Gomez/Desktop/BlockChain/subnet-alpha"
 
 [miner]
 first_attempt_time_ms = 60_000
 subsequent_attempt_time_ms = 600_000
 microblock_attempt_time_ms = 15_000
 
+[connection_options]
+public_ip_address = "189.193.73.227:8044"
+
 [burnchain]
 chain = "stacks_layer_1"
 mode = "subnet"
-first_burn_header_height = 119_531
-first_burn_header_hash = "9ba2f357115308fb1c503715f3a1b0cb3e8fdbe6baea7e7634635affdf675501"
-contract_identifier = "ST3D03X5BHMNSAAW71NN7BQRMV4DW2G4JB3PXDYJG.subnet"
+# first_burn_header_height needs to be set after the STX block height in the archive file or snapshot
+first_burn_header_height = 125_753
+# first_burn_header_hash = "0x1946a28825c7b069a4290e8b1358703ccdb08a2fceef915d35cb29af44ae2e69"
+# update from smart contract publish
+contract_identifier = "ST3D03X5BHMNSAAW71NN7BQRMV4DW2G4JB3PXDYJG.subnet-v1"
+# peer_host should point to testnet follower 1
 peer_host = "127.0.0.1"
 rpc_port = 20443
 peer_port = 20444
 observer_port = 30445
+rpc_ssl = false
 
