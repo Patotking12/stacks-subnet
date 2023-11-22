@@ -1,0 +1,36 @@
+[node]
+chain_id = 0x12345679
+rpc_bind = "0.0.0.0:8044"
+p2p_bind = "0.0.0.0:8045"
+mining_key = "7e4939be712250b07873f01d24db57786814c59692ebbf01792e88a1fa3ea6be01"
+local_peer_seed = "03f39cfb7b6cc208f7480bd0c5f6340487f243329e38772b19253b0e1380f2e723"
+data_url = "http://189.193.73.217:8044" # RPC port
+p2p_address = "189.193.73.217:8045" #P2P port
+miner = true
+mine_microblocks = true
+prometheus_bind = "0.0.0.0:9153"  
+working_dir = "/Users/Pato_Gomez/BlockChain/subnet"
+#bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:20444"
+
+
+[miner]
+first_attempt_time_ms = 60_000
+subsequent_attempt_time_ms = 600_000
+microblock_attempt_time_ms = 15_000
+
+[connection_options]
+public_ip_address = "189.193.73.217:8045" #needs to be P2P port
+
+[burnchain]
+chain = "stacks_layer_1"
+mode = "subnet"
+first_burn_header_height = 125_753
+# first_burn_header_hash = "0x1946a28825c7b069a4290e8b1358703ccdb08a2fceef915d35cb29af44ae2e69"
+contract_identifier = "ST3D03X5BHMNSAAW71NN7BQRMV4DW2G4JB3PXDYJG.subnet-v1"
+peer_host = "127.0.0.1"
+rpc_port = 20443
+peer_port = 20444
+observer_port = 30445
+rpc_ssl = false
+
+
