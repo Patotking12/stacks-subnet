@@ -3,7 +3,7 @@ rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 local_peer_seed = "eadd1addf97be63a5b8987a331cc2f1e6445ddaf8f2fb0b084622de7bcb1652401"
 prometheus_bind = "0.0.0.0:9154"
-working_dir = "/Users/Pato_Gomez/BlockChain/stacks-blockchain"
+working_dir = "/Users/Pato_Gomez/BlockChain/subnet-follower"
 bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.stacks.co:20444"
 
 [burnchain]
@@ -19,3 +19,5 @@ peer_port = 18333
 endpoint = "127.0.0.1:30445"
 retry_count = 255
 events_keys = ["*"]
+
+

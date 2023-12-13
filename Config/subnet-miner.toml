@@ -9,9 +9,8 @@ p2p_address = "189.193.73.217:8045" #P2P port
 miner = true
 mine_microblocks = true
 prometheus_bind = "0.0.0.0:9153"  
-working_dir = "/Users/Pato_Gomez/BlockChain/subnet"
+working_dir = "/Users/Pato_Gomez/BlockChain/subnet-miner"
 #bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:20444"
-
 
 [miner]
 first_attempt_time_ms = 60_000
@@ -33,4 +32,7 @@ peer_port = 20444
 observer_port = 30445
 rpc_ssl = false
 
-
+[[events_observer]]
+endpoint = "127.0.0.1:3700"
+retry_count = 255
+events_keys = ["*"]
